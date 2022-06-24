@@ -13,19 +13,19 @@ public class Utente {
 		// Se email contiene un carattere @ e un . in input continuo, altrimenti sollevo
 		// un' Eccezione
 
-		if (email.matches("[a-z].[a-z]+@+[a-z].[a-z]")) {
-			throw new Exception("Email inserita non valida");
+		if (!email.contains("@") || (!email.contains("."))) {
+			throw new Exception("Email inserita non valida. Riprova!");
 		}
 
 		// Se password è lunga tra gli 8 e 12 caratteri in input continuo, altrimenti
 		// sollevo un'Eccezione
 		if (password.length() < 8 || password.length() > 12) {
-			throw new Exception("Password inserita non valida");
+			throw new Exception("Password inserita non valida. Riprova!");
 		}
 
 		// Se eta è maggiore di 18 in input continuo altrimenti sollevo un'Eccezione
 		if (eta < 18) {
-			throw new Exception("Età dell'untente non valida");
+			throw new Exception("Età dell'untente non valida. Riprova!");
 		}
 		// Assegno nome, cognome, email ed eta
 		this.nome = nome;
@@ -76,4 +76,8 @@ public class Utente {
 		this.eta = eta;
 	}
 
+	@Override
+	public String toString() {
+		return nome + " " + cognome;
+	}
 }
